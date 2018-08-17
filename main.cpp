@@ -6,13 +6,18 @@
 using namespace std;
 
 void gotoxy(int x,int y){
-	
+	HANDLE hCon;
+	hCon=GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD dwPos;
+	dwPos.X=x;
+	dwPos.Y=y;
+	SetConsoleCursorPosition(hCon,dwPos);
 }
 
 int main(int argc, char** argv) {
 	unsigned int numero=0;
 	unsigned int total=0;
-	int cot=1;
+	int cot=1,aux=0,c=0,y1=0;
 	cout<<"Ingrese numero"<<endl;
 	cin>>numero;total=numero;
 	
@@ -21,16 +26,28 @@ int main(int argc, char** argv) {
 	for(int i=1;i<20;i++){	
 		if(i<10){
 
-			total=total*i;
-			cout<<"\t"<<numero<<"*"<<i<<"="<<total<<endl;
-			numero=total;
+			total=total*i;aux=total;
+			do{
+				c++;
+				aux/=10;
+			}while(aux>0);
+			
+			gotoxy(20-c,3+y1);
+			cout<<numero<<"*"<<i<<"="<<total<<endl;
+			numero=total;c=0;aux=0;y1++;
 			
 		}else if(i<18){
 			
 			cot++;
-			total=total/cot;
-			cout<<"\t"<<numero<<"/"<<cot<<"="<<total<<endl;
-			numero=total;
+			total=total/cot;aux=total;
+			do{
+				c++;
+				aux/=10;
+			}while(aux>0);
+			
+			gotoxy(20-c,3+y1);
+			cout<<numero<<"/"<<cot<<"="<<total<<endl;
+			numero=total;c=0;aux=0;y1++;
 		}	
 	}
 	
