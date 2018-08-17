@@ -26,14 +26,15 @@ int main(int argc, char** argv) {
 	for(int i=1;i<20;i++){	
 		if(i<10){
 
-			total=total*i;aux=total;
+			total=total*i;numero=total;aux=total;
 			do{
 				c++;
 				aux/=10;
 			}while(aux>0);
-			
-			gotoxy(20-c,3+y1);
-			cout<<numero<<"*"<<i<<"="<<total<<endl;
+			gotoxy(21-c,3+y1);
+			cout<<numero;
+			gotoxy(21,3+y1);
+			cout<<"*"<<i<<"="<<total<<endl;
 			numero=total;c=0;aux=0;y1++;
 			
 		}else if(i<18){
@@ -45,8 +46,10 @@ int main(int argc, char** argv) {
 				aux/=10;
 			}while(aux>0);
 			
-			gotoxy(20-c,3+y1);
-			cout<<numero<<"/"<<cot<<"="<<total<<endl;
+			gotoxy(21-c,3+y1);
+			cout<<numero;
+			gotoxy(21,3+y1);
+			cout<<"/"<<cot<<"="<<total<<endl;
 			numero=total;c=0;aux=0;y1++;
 		}	
 	}
