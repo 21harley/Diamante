@@ -16,17 +16,20 @@ void gotoxy(int x,int y){
 
 int main(int argc, char** argv) {
 	unsigned long long numero=0,aux=0,total=0;
-
-	int cot=1,c=0,y1=0,res=0;
+	int cot=1,c=0,y1=0,res=0,a=0;
+	
 do{
 	cout<<"\n Bienvenido a la mina Airus"<<endl;
 	cout<<"\n 1)Resolver diamante"<<endl;
 	cout<<"\n 2)salir "<<endl;
 	cin>>res;
+	
 	switch(res){
 		case 1:
+	system("cls");		
 	cout<<"Ingrese numero"<<endl;
 	cin>>numero;total=numero;
+	
 	for(int i=1;i<20;i++){	
 		if(i<10){
 			total=total*i;numero=total;aux=total;
@@ -35,14 +38,12 @@ do{
 				aux/=10;
 			}while(aux>0);
 			
-			gotoxy(21-c,3+y1);
-			cout<<numero;
-			gotoxy(21,3+y1);
-			cout<<"*"<<i<<"="<<fixed<<total<<endl;
+			gotoxy(21-c,3+y1);cout<<numero;
+			
+			gotoxy(21,3+y1);cout<<"*"<<i<<"="<<total<<endl;
 			numero=total;c=0;aux=0;y1++;
 			
 		}else if(i<18){
-			
 			cot++;
 			total=total/cot;aux=total;
 			do{
@@ -50,13 +51,14 @@ do{
 				aux/=10;
 			}while(aux>0);
 			
-			gotoxy(21-c,3+y1);
-			cout<<numero;
-			gotoxy(21,3+y1);
-			cout<<"/"<<cot<<"="<<fixed<<total<<endl;
+			gotoxy(21-c,3+y1);cout<<numero;
+			
+			gotoxy(21,3+y1);cout<<"/"<<cot<<"="<<total<<endl;
 			numero=total;c=0;aux=0;y1++;
 		}	
 	}
+	cot=1;y1=0;total=0;
+	system("pause");system("cls");
 		break;
 		case 2: a=1;break;
 	}
